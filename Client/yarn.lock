@@ -1394,6 +1394,11 @@ functions-have-names@^1.2.3:
   resolved "https://registry.npmjs.org/functions-have-names/-/functions-have-names-1.2.3.tgz"
   integrity sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==
 
+geolocation-promise@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/geolocation-promise/-/geolocation-promise-1.0.2.tgz#dfc1a5711e6c62384ad0901751b4e66e649842ee"
+  integrity sha512-Vq6opJ3owChYlQ2V79r34lQ15IWY3gREw0s7E96NsYkEfKVAozZCVwjx+pKNV+q1oAyjYc6bhcvAUqnb+0Sm6g==
+
 get-intrinsic@^1.0.2, get-intrinsic@^1.1.1, get-intrinsic@^1.1.3, get-intrinsic@^1.2.0, get-intrinsic@^1.2.1, get-intrinsic@^1.2.2:
   version "1.2.2"
   resolved "https://registry.npmjs.org/get-intrinsic/-/get-intrinsic-1.2.2.tgz"
