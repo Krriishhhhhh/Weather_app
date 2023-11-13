@@ -14,11 +14,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const client_1 = require("@prisma/client");
+const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+const SECRET = "krish"; // add this in env file.
 const prisma = new client_1.PrismaClient();
 const router = express_1.default.Router();
 //1.Signup at the root
 router.post("/signup", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    //input would be username, email and passowrd which needs to be stored in database using prisma orm
     try {
         const { username, email, password } = req.body;
         if (!username) {
@@ -56,7 +57,9 @@ router.post("/login", (req, res) => __awaiter(void 0, void 0, void 0, function* 
             },
         });
         if (user && user.password === password) {
-            res.status(200).json({ message: "Login successful", });
+            const payload = { userId: user.id, Username: user.username };
+            const token = jsonwebtoken_1.default.sign(payload, SECRET, { expiresIn: "1h" });
+            res.status(200).json({ message: "Login successful", token });
         }
         else {
             res.status(401).json({ message: "Invalid username or password" });

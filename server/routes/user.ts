@@ -1,5 +1,8 @@
 import express from "express";
 import { PrismaClient } from "@prisma/client";
+import jwt from 'jsonwebtoken'
+
+const SECRET = "krish"// add this in env file.
 
 const prisma = new PrismaClient();
 const router = express.Router();
@@ -7,8 +10,7 @@ const router = express.Router();
 
 //1.Signup at the root
 router.post("/signup", async (req, res) => {
-  //input would be username, email and passowrd which needs to be stored in database using prisma orm
-
+ 
   try {
     const { username, email, password } = req.body;
 
@@ -58,8 +60,9 @@ router.post("/login", async (req, res) => {
 
     
     if (user && user.password === password) {
-
-      res.status(200).json({ message: "Login successful", });
+      const payload  = {userId :user.id,Username : user.username }
+      const token = jwt.sign(payload,SECRET,{expiresIn : "1h"})
+      res.status(200).json({ message: "Login successful",token });
     } else {
       res.status(401).json({ message: "Invalid username or password" });
     }
