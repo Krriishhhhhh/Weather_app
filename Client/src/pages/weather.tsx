@@ -68,7 +68,7 @@ function Weather() {
     if (localStorage.getItem("token")) {
       fetchWeather();
     }
-  }, []);
+  });
 
   return (
     <div className="weather-container">
