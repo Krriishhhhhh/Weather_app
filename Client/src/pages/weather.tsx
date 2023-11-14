@@ -52,6 +52,7 @@ function Weather() {
           const data = await getWeatherData(latitude, longitude);
           setWeatherData(data);
           setLoading(false);
+          
         },
         (error) => {
           console.error('Error getting location:', error.message);
@@ -68,36 +69,36 @@ function Weather() {
     if (localStorage.getItem("token")) {
       fetchWeather();
     }
-  });
+  },[]);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-    <div className="max-w-md p-6 bg-white rounded-lg shadow-lg w-full text-gray-800">
-      <h2 className="text-3xl mb-4 text-center font-bold">Weather Information</h2>
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
-        <div className="text-center">
-          <h3 className="text-xl mb-2">
-            {weatherData?.location?.name}, {weatherData?.location?.region}, {weatherData?.location?.country}
-          </h3>
-          <p className="text-sm">Local Time: {weatherData?.location?.localtime}</p>
-          <img src={weatherData?.current?.weather_icons[0]} alt="Weather Icon" className="mx-auto my-4" />
-          <p className="text-lg">Temperature: {weatherData?.current?.temperature}°C</p>
-          <p className="text-lg">Condition: {weatherData?.current?.weather_descriptions[0]}</p>
-          <p className="text-lg">Wind: {weatherData?.current?.wind_speed} m/s, {weatherData?.current?.wind_dir}</p>
-          <p className="text-lg">Humidity: {weatherData?.current?.humidity}%</p>
-          <p className="text-lg">Pressure: {weatherData?.current?.pressure} hPa</p>
-          <p className="text-lg">UV Index: {weatherData?.current?.uv_index}</p>
-          <p className="text-lg">Cloud Cover: {weatherData?.current?.cloudcover}%</p>
-          <p className="text-lg">Visibility: {weatherData?.current?.visibility} km</p>
-        </div>
-      )}
-      <div className="absolute top-4 right-4">
-        <Logout />
+    <div className="flex flex-col items-center justify-center min-h-screen bg-blue-200" style={{ backgroundImage: 'url("/photo.jpg")', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+  <div className="max-w-md p-6 bg-indigo-100 rounded-lg shadow-lg w-full text-gray-900">
+    <h2 className="text-4xl mb-4 text-center font-bold text-blue-600">Weather Information</h2>
+    {loading ? (
+      <p className="font-bold text-lg text-gray-700">Loading...</p>
+    ) : (
+      <div className="text-center">
+        <h3 className="text-2xl mb-2 font-bold text-gray-800">
+          {weatherData?.location?.name}, {weatherData?.location?.region}, {weatherData?.location?.country}
+        </h3>
+        <p className="text-sm text-gray-700">Local Time: {weatherData?.location?.localtime}</p>
+        <img src={weatherData?.current?.weather_icons[0]} alt="Weather Icon" className="mx-auto my-4" />
+        <p className="text-lg font-bold text-gray-800">Temperature: {weatherData?.current?.temperature}°C</p>
+        <p className="text-lg font-bold text-gray-800">Condition: {weatherData?.current?.weather_descriptions[0]}</p>
+        <p className="text-lg font-bold text-gray-800">Wind: {weatherData?.current?.wind_speed} m/s, {weatherData?.current?.wind_dir}</p>
+        <p className="text-lg font-bold text-gray-800">Humidity: {weatherData?.current?.humidity}%</p>
+        <p className="text-lg font-bold text-gray-800">Pressure: {weatherData?.current?.pressure} hPa</p>
+        <p className="text-lg font-bold text-gray-800">UV Index: {weatherData?.current?.uv_index}</p>
+        <p className="text-lg font-bold text-gray-800">Cloud Cover: {weatherData?.current?.cloudcover}%</p>
+        <p className="text-lg font-bold text-gray-800">Visibility: {weatherData?.current?.visibility} km</p>
       </div>
+    )}
+    <div className="absolute top-4 right-4">
+      <Logout />
     </div>
   </div>
+</div>
   );
 }
 
