@@ -27,7 +27,7 @@ router.post("/signup", (req, res) => __awaiter(void 0, void 0, void 0, function*
         }
         const existingUser = yield prisma.user.findUnique({
             where: {
-                username: username
+                username: username,
             },
         });
         if (existingUser) {

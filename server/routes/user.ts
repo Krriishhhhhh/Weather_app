@@ -1,27 +1,24 @@
 import express from "express";
 import { PrismaClient } from "@prisma/client";
-import jwt from 'jsonwebtoken'
+import jwt from "jsonwebtoken";
 
-const SECRET = "krish"// add this in env file.
+const SECRET = "krish"; // add this in env file.
 
 const prisma = new PrismaClient();
 const router = express.Router();
 
-
 //1.Signup at the root
 router.post("/signup", async (req, res) => {
- 
   try {
     const { username, email, password } = req.body;
 
-     if (!username) {
-    return res.status(400).json({ message: "Username is required" });
-  }
-
+    if (!username) {
+      return res.status(400).json({ message: "Username is required" });
+    }
 
     const existingUser = await prisma.user.findUnique({
       where: {
-        username:username
+        username: username,
       },
     });
 
@@ -44,9 +41,6 @@ router.post("/signup", async (req, res) => {
   }
 });
 
-
-
-
 // 2. Login route
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
@@ -58,11 +52,11 @@ router.post("/login", async (req, res) => {
       },
     });
 
-    
     if (user && user.password === password) {
-      const payload  = {userId :user.id,Username : user.username }
-      const token = jwt.sign(payload,SECRET,{expiresIn : "1h"})
-      res.status(200).json({ message: "Login successful",token });
+      const payload = { userId: user.id, Username: user.username };
+      const token = jwt.sign(payload, SECRET, { expiresIn: "1h" });
+      
+      res.status(200).json({ message: "Login successful", token });
     } else {
       res.status(401).json({ message: "Invalid username or password" });
     }
@@ -71,6 +65,5 @@ router.post("/login", async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 });
-
 
 export default router;

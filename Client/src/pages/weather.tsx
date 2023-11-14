@@ -71,33 +71,33 @@ function Weather() {
   });
 
   return (
-    <div className="weather-container">
-      <h2>Weather Information</h2>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <div className="max-w-md p-6 bg-white rounded-lg shadow-lg w-full text-gray-800">
+      <h2 className="text-3xl mb-4 text-center font-bold">Weather Information</h2>
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <div className="weather-info">
-          <h3>
+        <div className="text-center">
+          <h3 className="text-xl mb-2">
             {weatherData?.location?.name}, {weatherData?.location?.region}, {weatherData?.location?.country}
           </h3>
-          <p>Local Time: {weatherData?.location?.localtime}</p>
-          <img src={weatherData?.current?.weather_icons[0]} alt="Weather Icon" />
-          <p>Temperature: {weatherData?.current?.temperature}°C</p>
-          <p>Condition: {weatherData?.current?.weather_descriptions[0]}</p>
-          <p>Wind: {weatherData?.current?.wind_speed} m/s, {weatherData?.current?.wind_dir}</p>
-          <p>Humidity: {weatherData?.current?.humidity}%</p>
-          <p>Pressure: {weatherData?.current?.pressure} hPa</p>
-          <p>UV Index: {weatherData?.current?.uv_index}</p>
-          <p>Cloud Cover: {weatherData?.current?.cloudcover}%</p>
-          <p>Visibility: {weatherData?.current?.visibility} km</p>
+          <p className="text-sm">Local Time: {weatherData?.location?.localtime}</p>
+          <img src={weatherData?.current?.weather_icons[0]} alt="Weather Icon" className="mx-auto my-4" />
+          <p className="text-lg">Temperature: {weatherData?.current?.temperature}°C</p>
+          <p className="text-lg">Condition: {weatherData?.current?.weather_descriptions[0]}</p>
+          <p className="text-lg">Wind: {weatherData?.current?.wind_speed} m/s, {weatherData?.current?.wind_dir}</p>
+          <p className="text-lg">Humidity: {weatherData?.current?.humidity}%</p>
+          <p className="text-lg">Pressure: {weatherData?.current?.pressure} hPa</p>
+          <p className="text-lg">UV Index: {weatherData?.current?.uv_index}</p>
+          <p className="text-lg">Cloud Cover: {weatherData?.current?.cloudcover}%</p>
+          <p className="text-lg">Visibility: {weatherData?.current?.visibility} km</p>
         </div>
       )}
-
-
-
-      <br /><br />
-      <Logout/>
+      <div className="absolute top-4 right-4">
+        <Logout />
+      </div>
     </div>
+  </div>
   );
 }
 
