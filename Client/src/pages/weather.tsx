@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+
 import { Logout } from '../../components/logout';
 
 interface WeatherData {
@@ -26,7 +27,7 @@ interface WeatherData {
 
 
 const API_KEY = '0a8c6ed4c635549869d0622ede552971';
-const WEATHERSTACK_BASE_URL = 'http://api.weatherstack.com';
+const WEATHERSTACK_BASE_URL ='http://api.weatherstack.com';
 
 function Weather() {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);

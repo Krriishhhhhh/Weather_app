@@ -2,7 +2,7 @@ import express from "express";
 import { PrismaClient } from "@prisma/client";
 import jwt from "jsonwebtoken";
 
-const SECRET = "krish"; // add this in env file.
+const SECRET = "krish"; 
 
 const prisma = new PrismaClient();
 const router = express.Router();

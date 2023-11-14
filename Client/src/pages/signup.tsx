@@ -32,9 +32,10 @@ function SignUp() {
     } catch (err: any) {
       console.error(err);
 
-      // Extract and set a more user-friendly error message
       if (err.response && err.response.data) {
-        setError(err.response.data.message || "An error occurred during signup");
+        setError(
+          err.response.data.message || "An error occurred during signup"
+        );
       } else {
         setError("An error occurred during signup");
       }
@@ -57,9 +58,13 @@ function SignUp() {
       {/* Sign Up Form */}
       <div className="absolute mt-16 right-20 flex justify-center items-center w-1/3 z-10">
         <div className="bg-white bg-opacity-50 rounded-lg p-6 shadow-md w-80">
-          <h2 className="text-3xl font-bold text-center mb-4 text-gray-800">Sign Up</h2>
+          <h2 className="text-3xl font-bold text-center mb-4 text-gray-800">
+            Sign Up
+          </h2>
           <div className="mb-4">
-            <label className="block mb-2 text-sm font-semibold text-gray-800">Username</label>
+            <label className="block mb-2 text-sm font-semibold text-gray-800">
+              Username
+            </label>
             <input
               type="text"
               onChange={(e) => {
@@ -69,7 +74,9 @@ function SignUp() {
             />
           </div>
           <div className="mb-4">
-            <label className="block mb-2 text-sm font-semibold text-gray-800">Email</label>
+            <label className="block mb-2 text-sm font-semibold text-gray-800">
+              Email
+            </label>
             <input
               type="text"
               onChange={(e) => {
@@ -79,7 +86,9 @@ function SignUp() {
             />
           </div>
           <div className="mb-6">
-            <label className="block mb-2 text-sm font-semibold text-gray-800">Password</label>
+            <label className="block mb-2 text-sm font-semibold text-gray-800">
+              Password
+            </label>
             <input
               type="password"
               onChange={(e) => {

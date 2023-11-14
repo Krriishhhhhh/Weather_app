@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import React from 'react';
-import 'tailwindcss/tailwind.css'; // Import Tailwind CSS
+
 
 function Root() {
   const router = useRouter();
@@ -23,7 +23,7 @@ function Root() {
         className="absolute top-0 left-0 min-w-full min-h-full object-cover z-0"
       >
         <source
-          src="/video.mp4" // Replace with your own video source
+          src="/video.mp4" 
           type="video/mp4"
         />
         Your browser does not support the video tag.

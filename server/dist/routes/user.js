@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const client_1 = require("@prisma/client");
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-const SECRET = "krish"; // add this in env file.
+const SECRET = "krish";
 const prisma = new client_1.PrismaClient();
 const router = express_1.default.Router();
 //1.Signup at the root
