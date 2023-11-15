@@ -12,7 +12,7 @@ function SignUp() {
   const handleSignUp = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:5001/user/signup",
+        "https://api.akiokrish.com/user/signup",
         {
           username,
           email,
